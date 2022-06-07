@@ -19,6 +19,9 @@ export function Home() {
   }
 
   function handleToggleTaskDone(id: number) {
+    const task = tasks.filter(item => item.id == id) //procura pelo id especificado
+    task.map(item => item.done = true)
+    console.log(...task)
     //TODO - toggle task done if exists
   }
 

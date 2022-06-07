@@ -33,6 +33,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
                 testID={`button-${index}`}
                 activeOpacity={0.7}
                 style={styles.taskButton}
+                onPress={() => toggleTaskDone(item.id)}
                 //TODO - use onPress (toggle task) prop
               >
                 <View 
