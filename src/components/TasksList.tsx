@@ -27,7 +27,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
       showsVerticalScrollIndicator={false}
       renderItem={({ item, index }) => {
         return (
-          <ItemWrapper index={index}>
+          <ItemWrapper index={index}> 
             <View>
               <TouchableOpacity
                 testID={`button-${index}`}
@@ -38,6 +38,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
               >
                 <View 
                   testID={`marker-${index}`}
+                  style={item.done? styles.taskMarkerDone : styles.taskMarker}
                   //TODO - use style prop 
                 >
                   { item.done && (
@@ -50,6 +51,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
                 </View>
 
                 <Text 
+                  style={styles.taskText}
                   //TODO - use style prop
                 >
                   {item.title}
@@ -60,6 +62,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
             <TouchableOpacity
               testID={`trash-${index}`}
               style={{ paddingHorizontal: 24 }}
+              onPress={() => removeTask(item.id)}
               //TODO - use onPress (remove task) prop
             >
               <Image source={trashIcon} />

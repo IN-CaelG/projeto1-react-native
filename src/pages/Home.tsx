@@ -19,13 +19,15 @@ export function Home() {
   }
 
   function handleToggleTaskDone(id: number) {
-    const task = tasks.filter(item => item.id == id) //procura pelo id especificado
-    task.map(item => item.done = true)
-    console.log(...task)
+    const taskList = tasks.filter(item => item.id == id); //procura pelo id especificado
+    taskList.map(item => item.done = !item.done);
+    setTasks(taskList);//Precisamos do setTasks para atualizar em tempo real
+    console.log(...taskList);
     //TODO - toggle task done if exists
   }
 
   function handleRemoveTask(id: number) {
+    setTasks(oldState => oldState.filter(item=>(item.id != id)));
     //TODO - remove task from state
   }
 
